@@ -7,8 +7,8 @@ Project represent car rental with functions:
 - login and register
 
 Authorized:
-users - only borrows cars
-administration - adds, edits, modifications, removes, adds images and borrows cars, adds, edits, removes and changes status for users
+- users - only borrows cars
+- administration - adds, edits, modifications, removes, adds images and borrows cars, adds, edits, removes and changes status for users
 
 Project have impremented migrations to create MySQLdatabase with all needed tables and keys.
 
