@@ -59,7 +59,7 @@
                             <label for="fuel" class="col-md-4 col-form-label text-md-right">{{ __('crud.cars.main.fuel') }}</label>
 
                             <div class="col-md-6">
-                                <input id="fuel" type="text" maxlength="500" class="form-control @error('fuel') is-invalid @enderror" name="fuel" value="{{ $car->fuel }}" readonly>
+                                <input id="fuel" type="text" maxlength="500" class="form-control @error('fuel') is-invalid @enderror" name="fuel" value="{{ __('crud.enums.fuel.'.$car->fuel) }}" readonly>
 
                                 @error('fuel')
                                     <span class="invalid-feedback" role="alert">
@@ -73,7 +73,7 @@
                             <label for="transmission" class="col-md-4 col-form-label text-md-right">{{ __('crud.cars.main.transmission') }}</label>
 
                             <div class="col-md-6">
-                                <input id="transmission" type="text" maxlength="500" class="form-control @error('transmission') is-invalid @enderror" name="transmission" value="{{ $car->transmission }}" readonly>
+                                <input id="transmission" type="text" maxlength="500" class="form-control @error('transmission') is-invalid @enderror" name="transmission" value="{{ __('crud.enums.transmission.'.$car->transmission) }}" readonly>
 
                                 @error('transmission')
                                     <span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
                             <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('crud.cars.main.carstatus') }}</label>
 
                             <div class="col-md-6">
-                                <input id="status" type="text" maxlength="500" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ $car->status }}" readonly>
+                                <input id="status" type="text" maxlength="500" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ __('crud.enums.status.'.$car->status) }}" readonly>
 
                                 @error('status')
                                     <span class="invalid-feedback" role="alert">
@@ -181,8 +181,9 @@
                                 </button>
                             </div>
                         </div>
-
-                        <img src = "{{ asset('storage/'.$car->image_path) }}">
+                        <div class="row justify-content-center">
+                            <img src = "{{ asset('storage/'.$car->image_path) }}">
+                        </div>
                     </form>
                 </div>
             </div>

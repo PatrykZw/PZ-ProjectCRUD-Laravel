@@ -179,8 +179,9 @@
                                 </button>
                             </div>
                         </div>
-
-                        <img src = "{{ asset('storage/'.$car->image_path) }}">
+                        <div class="row justify-content-center">
+                            <img src = "{{ asset('storage/'.$car->image_path) }}">
+                        </div>
                     </form>
                 </div>
             </div>
