@@ -1,0 +1,9 @@
+body {
+    background-color: lightgray !important;
+}
+.card {
+    background-color: black !important;
+    color: white;
+}
+.green {color: green !important;}
+.red {color: red !important;}

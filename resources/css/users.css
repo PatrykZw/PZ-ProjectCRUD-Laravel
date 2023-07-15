@@ -1,0 +1,14 @@
+body {
+    background-color: lightblue !important;
+}
+.card-body {
+    background-color: white !important;
+}
+.card-header {
+    background-color: blue;
+    color: white;
+}
+.form-control {
+    background-color: blue;
+    color: white;
+}

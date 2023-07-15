@@ -1,0 +1,12 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/delete.js": "/js/delete.js",
+    "/js/welcome.js": "/js/welcome.js",
+    "/js/modify.js": "/js/modify.js",
+    "/js/cars.js": "/js/cars.js",
+    "/css/app.css": "/css/app.css",
+    "/css/cars.css": "/css/cars.css",
+    "/css/users.css": "/css/users.css",
+    "/css/welcome.css": "/css/welcome.css",
+    "/css/borrow.css": "/css/borrow.css"
+}
