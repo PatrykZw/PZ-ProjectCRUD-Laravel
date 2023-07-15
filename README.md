@@ -20,6 +20,6 @@ Project have impremented migrations to adds in MySQL database named projectcrud 
 5. Ajax
 6. Bootstrap libraries
 7. Laravel Framework - v8.83.27
-8. Apache Server - v2.4.41
-9. MySQL Database - v7.4.1
+8. Apache Server - v2.4.56
+9. MySQL Database - v8.2.4
 10. XAMPP Control Panel - v3.3.0
