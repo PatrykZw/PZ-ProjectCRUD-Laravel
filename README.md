@@ -12,7 +12,7 @@ Authorized:
 
 Project have impremented migrations to create MySQLdatabase with all needed tables and keys.
 
-# Used technologies:
+# Used technologies
 1. Html
 2. Css
 3. JS
