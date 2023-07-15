@@ -10,7 +10,7 @@ Authorized:
 - users - only borrows cars
 - administration - adds, edits, modifications, removes, adds images and borrows cars, adds, edits, removes and changes status for users
 
-Project have impremented migrations to adds in MySQL database named projectcrud all needed tables and keys for project.
+Project have impremented migrations to adds in MySQL database named projectcrud all needed tables and keys for project (Use of migration requires creating the projectcrud database) 
 
 # Used technologies
 1. Html
