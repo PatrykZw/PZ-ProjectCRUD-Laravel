@@ -12,7 +12,7 @@ Authorized:
 
 Project have impremented migrations to adds in MySQL database named projectcrud all needed tables and keys for project<br>(Use of migration requires creating the projectcrud database)
 
-Swagger documentation has located in storage/api-docs/api-docs.json
+Swagger documentation has located in storage/api-docs/api-docs.json file
 
 # Used technologies
 1. Html
