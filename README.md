@@ -1,3 +1,32 @@
+# PZ-ProjectCRUD-Laravel
+Project CRUD - Car Rental
+
+Project represent car rental with functions:
+- for users - adds, edits, removes and changes status
+- for cars - adds, edits, modifications, removes, adds images and borrows
+- login and register
+
+Authorized:
+- users - only borrows cars
+- administration - adds, edits, modifications, removes, adds images and borrows cars, adds, edits, removes and changes status for users
+
+Project have impremented migrations to adds in MySQL database named projectcrud all needed tables and keys for project<br>(Use of migration requires creating the projectcrud database)
+
+Swagger documentation has located in storage/api-docs/api-docs.json
+
+# Used technologies
+1. Html
+2. Css
+3. JS
+4. JQuerry
+5. Ajax
+6. Bootstrap libraries
+7. Laravel Framework - v8.83.27
+8. Apache Server - v2.4.56
+9. MySQL Database - v8.2.4
+10. XAMPP Control Panel - v3.3.0
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
