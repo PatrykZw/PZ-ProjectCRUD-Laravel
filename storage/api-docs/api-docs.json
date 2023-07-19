@@ -1,0 +1,1506 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ProjectCRUD",
+        "description": "API documentation for the ProjectCRUD application.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/cars": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Get list of cars",
+                "description": "Display a listing of the resource.",
+                "operationId": "indexCars",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Store a newly created car in storage",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "storeCar",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpsertCarRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Successful operation - Redirect to index",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/create": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Show the form for creating a new car",
+                "description": "Show the form for creating a new resource.",
+                "operationId": "createCar",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "carmake": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Audi",
+                                                    "BMW",
+                                                    "Ford",
+                                                    "Jaguar",
+                                                    "Kia",
+                                                    "Land Rover",
+                                                    "Lexus",
+                                                    "Mercedes Benz",
+                                                    "MINI",
+                                                    "Nissan",
+                                                    "SEAT",
+                                                    "Skoda",
+                                                    "Toyota",
+                                                    "Vauxhall",
+                                                    "Volkswagen",
+                                                    "Volvo"
+                                                ]
+                                            }
+                                        },
+                                        "carbodyshape": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Combi",
+                                                    "Covertible",
+                                                    "Coupe",
+                                                    "Estate",
+                                                    "Hatchback",
+                                                    "MPV",
+                                                    "Saloon",
+                                                    "Sedan",
+                                                    "SUV"
+                                                ]
+                                            }
+                                        },
+                                        "carfuel": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Electric",
+                                                    "Hybrid",
+                                                    "Petrol",
+                                                    "Oil"
+                                                ]
+                                            }
+                                        },
+                                        "cartransmission": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Manual",
+                                                    "Automatic"
+                                                ]
+                                            }
+                                        },
+                                        "carstatus": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Fabric",
+                                                    "Modified"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/{car}": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Display the specified car",
+                "description": "Display the specified resource.",
+                "operationId": "showCar",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to show",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Car not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Car not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Update the specified car in storage",
+                "description": "Update the specified resource in storage.",
+                "operationId": "updateCar",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpsertCarRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Successful operation - Redirect to cars.index",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Remove the specified car from storage",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "destroyCar",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Car not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Car not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/edit/{car}": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Show the form for editing the specified car",
+                "description": "Show the form for editing the specified resource.",
+                "operationId": "editCar",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to edit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "carmake": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Audi",
+                                                    "BMW",
+                                                    "Ford",
+                                                    "Jaguar",
+                                                    "Kia",
+                                                    "Land Rover",
+                                                    "Lexus",
+                                                    "Mercedes Benz",
+                                                    "MINI",
+                                                    "Nissan",
+                                                    "SEAT",
+                                                    "Skoda",
+                                                    "Toyota",
+                                                    "Vauxhall",
+                                                    "Volkswagen",
+                                                    "Volvo"
+                                                ]
+                                            }
+                                        },
+                                        "carbodyshape": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Combi",
+                                                    "Covertible",
+                                                    "Coupe",
+                                                    "Estate",
+                                                    "Hatchback",
+                                                    "MPV",
+                                                    "Saloon",
+                                                    "Sedan",
+                                                    "SUV"
+                                                ]
+                                            }
+                                        },
+                                        "carfuel": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Electric",
+                                                    "Hybrid",
+                                                    "Petrol",
+                                                    "Oil"
+                                                ]
+                                            }
+                                        },
+                                        "cartransmission": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Automatic",
+                                                    "Manual"
+                                                ]
+                                            }
+                                        },
+                                        "carstatus": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Fabric",
+                                                    "Modified"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Car not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Car not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cars/{car}/download": {
+            "get": {
+                "tags": [
+                    "Cars"
+                ],
+                "summary": "Download image of the specified car from storage",
+                "description": "Download image of the specified resource in storage.",
+                "operationId": "downloadCarImage",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to download image from",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation - Download the car image",
+                        "content": {
+                            "image/jpeg": {
+                                "schema": {
+                                    "type": "string",
+                                    "format": "binary"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Car not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Car not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of users",
+                "description": "Display a listing of the resource.",
+                "operationId": "indexUsers",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "users": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/User"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Store a newly created user in storage",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "storeUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Successful operation - Redirect to index",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/create": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Show the form for creating a new user",
+                "description": "Show the form for creating a new resource.",
+                "operationId": "createUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "userrole": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Admin",
+                                                    "User"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Display the specified user",
+                "description": "Display the specified resource.",
+                "operationId": "showUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID of the user to show",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update the specified user in storage",
+                "description": "Update the specified resource in storage.",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID of the user to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Successful operation - Redirect to users.index",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Remove the specified user from storage",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "destroyUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID of the user to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/edit/{user}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Show the form for editing the specified user",
+                "description": "Show the form for editing the specified resource.",
+                "operationId": "editUser",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID of the user to edit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "$ref": "#/components/schemas/User"
+                                        },
+                                        "userrole": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Admin",
+                                                    "User"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "Welcome"
+                ],
+                "summary": "Display a listing of cars",
+                "description": "Display a listing of the resource.",
+                "operationId": "indexWelcome",
+                "parameters": [
+                    {
+                        "name": "filter[day_repayment_min]",
+                        "in": "query",
+                        "description": "Minimum day repayment",
+                        "schema": {
+                            "type": "number",
+                            "format": "double"
+                        }
+                    },
+                    {
+                        "name": "filter[day_repayment_max]",
+                        "in": "query",
+                        "description": "Maximum day repayment",
+                        "schema": {
+                            "type": "number",
+                            "format": "double"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "defaultImage": {
+                                            "type": "string"
+                                        },
+                                        "isGuest": {
+                                            "type": "boolean"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/borrow/{car}": {
+            "get": {
+                "tags": [
+                    "Welcome"
+                ],
+                "summary": "Borrow a car",
+                "description": "Borrow a car.",
+                "operationId": "borrowCar",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to borrow",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "carmake": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Audi",
+                                                    "BMW"
+                                                ]
+                                            }
+                                        },
+                                        "carbodyshape": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Sedan",
+                                                    "SUV"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Welcome"
+                ],
+                "summary": "Update the specified resource in storage",
+                "description": "Update the specified resource in storage.",
+                "operationId": "updateBorrow",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "description": "ID of the car to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpsertBorrowRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "302": {
+                        "description": "Successful operation - Redirect to welcome",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UpdateUserRequest": {
+                "title": "UpdateUserRequest",
+                "description": "Request data for updating a user.",
+                "required": [
+                    "name",
+                    "email",
+                    "password",
+                    "password_confirmation"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "The name of the user.",
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "description": "The email of the user.",
+                        "type": "string",
+                        "format": "email",
+                        "example": "john.doe@example.com"
+                    },
+                    "password": {
+                        "description": "The new password of the user.",
+                        "type": "string",
+                        "example": "NewPassword123"
+                    },
+                    "password_confirmation": {
+                        "description": "The confirmation of the new password.",
+                        "type": "string",
+                        "example": "NewPassword123"
+                    }
+                },
+                "type": "object"
+            },
+            "UpsertBorrowRequest": {
+                "title": "UpsertBorrowRequest",
+                "description": "Request data for creating/updating a borrow.",
+                "required": [
+                    "rental_date",
+                    "return_date"
+                ],
+                "properties": {
+                    "make": {
+                        "description": "The make of the car being borrowed.",
+                        "type": "string",
+                        "example": "Toyota"
+                    },
+                    "model": {
+                        "description": "The model of the car being borrowed.",
+                        "type": "string",
+                        "example": "Camry"
+                    },
+                    "body_shape": {
+                        "description": "The body shape of the car being borrowed.",
+                        "type": "string",
+                        "example": "Sedan"
+                    },
+                    "rental_date": {
+                        "description": "The rental date for the car.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-07-19"
+                    },
+                    "return_date": {
+                        "description": "The return date for the car.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-07-25"
+                    }
+                },
+                "type": "object"
+            },
+            "UpsertCarRequest": {
+                "title": "UpsertCarRequest",
+                "description": "Request data for creating/updating a car.",
+                "required": [
+                    "make",
+                    "model",
+                    "body_shape",
+                    "fuel",
+                    "transmission",
+                    "engine",
+                    "engine_capacity",
+                    "status",
+                    "day_repayment",
+                    "rental_date",
+                    "return_date",
+                    "image"
+                ],
+                "properties": {
+                    "make": {
+                        "description": "The make of the car.",
+                        "type": "string",
+                        "example": "Toyota"
+                    },
+                    "model": {
+                        "description": "The model of the car.",
+                        "type": "string",
+                        "example": "Camry"
+                    },
+                    "body_shape": {
+                        "description": "The body shape of the car.",
+                        "type": "string",
+                        "example": "Sedan"
+                    },
+                    "fuel": {
+                        "description": "The type of fuel used by the car.",
+                        "type": "string",
+                        "example": "Petrol"
+                    },
+                    "transmission": {
+                        "description": "The transmission type of the car.",
+                        "type": "string",
+                        "example": "Automatic"
+                    },
+                    "engine": {
+                        "description": "The engine type of the car.",
+                        "type": "string",
+                        "example": "V6"
+                    },
+                    "engine_capacity": {
+                        "description": "The engine capacity of the car.",
+                        "type": "number",
+                        "format": "float",
+                        "example": 2.5
+                    },
+                    "status": {
+                        "description": "The status of the car.",
+                        "type": "string",
+                        "example": "Fabric"
+                    },
+                    "day_repayment": {
+                        "description": "The day repayment of the car.",
+                        "type": "number",
+                        "example": 10
+                    },
+                    "rental_date": {
+                        "description": "The rental date of the car.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-07-19"
+                    },
+                    "return_date": {
+                        "description": "The return date of the car.",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-07-25"
+                    },
+                    "image": {
+                        "description": "The image of the car.",
+                        "type": "string",
+                        "example": "car_image.jpg"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "User",
+                "description": "Model of a User.",
+                "properties": {
+                    "id": {
+                        "description": "User ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "User's name",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "User's email",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "role": {
+                        "description": "User's role",
+                        "type": "string",
+                        "enum": [
+                            "admin",
+                            "user"
+                        ]
+                    },
+                    "password": {
+                        "description": "User's password",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
